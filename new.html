@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal Auth Forms</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth modal transitions */
+    .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-content {
+      transition: transform 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-md p-4 z-10">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#" class="text-xl font-bold">MySite</a>
+    <div class="flex space-x-4">
+      <a href="#" id="signInBtn" class="text-blue-600 hover:text-blue-800">Sign In</a>
+      <a href="#" id="signUpBtn" class="text-blue-600 hover:text-blue-800">Sign Up</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Sign In Modal -->
+<div id="signInModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible">
+  <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-md transform scale-95">
+    <div class="flex justify-between items-center border-b p-4">
+      <h3 class="text-xl font-semibold">Sign In</h3>
+      <button id="closeSignIn" class="text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="p-6">
+      <form id="signInForm">
+        <div class="mb-4">
+          <label for="signInEmail" class="block text-gray-700 mb-2">Email</label>
+          <input type="email" id="signInEmail" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-6">
+          <label for="signInPassword" class="block text-gray-700 mb-2">Password</label>
+          <input type="password" id="signInPassword" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div id="signUpModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible">
+  <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-md transform scale-95">
+    <div class="flex justify-between items-center border-b p-4">
+      <h3 class="text-xl font-semibold">Sign Up</h3>
+      <button id="closeSignUp" class="text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="p-6">
+      <form id="signUpForm">
+        <div class="mb-4">
+          <label for="signUpName" class="block text-gray-700 mb-2">Full Name</label>
+          <input type="text" id="signUpName" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-4">
+          <label for="signUpEmail" class="block text-gray-700 mb-2">Email</label>
+          <input type="email" id="signUpEmail" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-6">
+          <label for="signUpPassword" class="block text-gray-700 mb-2">Password</label>
+          <input type="password" id="signUpPassword" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  // DOM Elements
+  const signInBtn = document.getElementById('signInBtn');
+  const signUpBtn = document.getElementById('signUpBtn');
+  const signInModal = document.getElementById('signInModal');
+  const signUpModal = document.getElementById('signUpModal');
+  const closeSignIn = document.getElementById('closeSignIn');
+  const closeSignUp = document.getElementById('closeSignUp');
+  const signInForm = document.getElementById('signInForm');
+  const signUpForm = document.getElementById('signUpForm');
+
+  // Show Sign In Modal
+  signInBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    signInModal.classList.remove('invisible', 'opacity-0');
+    document.querySelector('#signInModal .modal-content').classList.remove('scale-95');
+    document.querySelector('#signInModal .modal-content').classList.add('scale-100');
+  });
+
+  // Show Sign Up Modal
+  signUpBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    signUpModal.classList.remove('invisible', 'opacity-0');
+    document.querySelector('#signUpModal .modal-content').classList.remove('scale-95');
+    document.querySelector('#signUpModal .modal-content').classList.add('scale-100');
+  });
+
+  // Close Modals
+  function closeModal(modal) {
+    modal.classList.add('invisible', 'opacity-0');
+    document.querySelector(`#${modal.id} .modal-content`).classList.remove('scale-100');
+    document.querySelector(`#${modal.id} .modal-content`).classList.add('scale-95');
+  }
+
+  closeSignIn.addEventListener('click', () => closeModal(signInModal));
+  closeSignUp.addEventListener('click', () => closeModal(signUpModal));
+
+  // Close when clicking outside modal content
+  window.addEventListener('click', (e) => {
+    if (e.target === signInModal) closeModal(signInModal);
+    if (e.target === signUpModal) closeModal(signUpModal);
+  });
+
+  // Form Submission
+  signInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Sign In form submitted!');
+    closeModal(signInModal);
+  });
+
+  signUpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Sign Up form submitted!');
+    closeModal(signUpModal);
+  });
+</script>
+</body>
+</html>
