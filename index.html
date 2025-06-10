@@ -349,6 +349,79 @@
     alert('Sign Up form submitted!');
     closeModal(signUpModal);
   });
+  //json for database connection
+  // Update your existing form submission handlers:
+
+// Sign Up Form Submission
+signUpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = {
+        name: document.getElementById('signUpName').value,
+        email: document.getElementById('signUpEmail').value,
+        password: document.getElementById('signUpPassword').value
+    };
+
+    try {
+        const response = await fetch('http://yourdomain.com/backend/signup.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            alert(data.message);
+            closeModal(signUpModal);
+            // Redirect or update UI as needed
+        } else {
+            alert(data.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred during sign up');
+    }
+});
+
+// Sign In Form Submission
+signInForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = {
+        email: document.getElementById('signInEmail').value,
+        password: document.getElementById('signInPassword').value
+    };
+
+    try {
+        const response = await fetch('http://yourdomain.com/backend/signin.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+            alert(data.message);
+            console.log('User data:', data.user);
+            closeModal(signInModal);
+            // Store user data in localStorage or session
+            localStorage.setItem('user', JSON.stringify(data.user));
+            // Redirect to dashboard or update UI
+            window.location.href = 'dashboard.html';
+        } else {
+            alert(data.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred during sign in');
+    }
+});
 </script>
 
     <!-- Counters Section -->
