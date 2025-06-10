@@ -65,7 +65,7 @@
         .card:hover {
             transform: scale(1.05);
             transition: all 0.3s ease-in-out;
-            background: navy;
+            background: blue;
             color: white;
         }
         /* Footer Gradient Background */
@@ -119,17 +119,21 @@
       </div>
     </div>
   </nav>
+  
 <!-- Hero Section -->
-    <section class="hero bg-gray-100 py-10">
-        <div class="container text-center">
-            <h2 class="text-4xl font-bold mb-4"> Welcome to Xedolink, Empowering Your Journey</h2>
+    <section class="hero bg-gray-100 py-10 mt-24" style="z-index:1; position:relative;">
+        <div class="container text-center mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-4 text-gray-900">Welcome to Xedolink, Empowering Your Journey</h2>
             <p class="text-lg text-gray-700 mb-6">Join us in revolutionizing the way we connect and travel.</p>
-            <a href="#services" class="bg-orange-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-orange-600 transition">
-                Discover Our Services
-            </a>
-            <a href="#services" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition">
-                Login
-            </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#services" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-800 transition">
+                    Services
+                </a>
+                <a href="#services" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-800 transition">
+                    Login
+                </a>
+            </div>
+        </div>
         </div>
     </section>
     <!-- Carousel Section -->
@@ -141,8 +145,10 @@
                 <img src="images/image1.jpg" class="d-block w-100 h-auto" alt="Innovative Solutions" style="object-fit: contain;">
             </div>
             <div class="carousel-caption d-none d-md-block">
-                <h5>Innovative Solutions</h5>
-                <p>Transforming industries with cutting-edge technology.</p>
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem 2rem; border-radius: 1rem; display: inline-block;">
+                    <h3 style="color: #2c07d0; font-weight: 700; font-size: 2rem;">Innovative Solutions</h3>
+                    <p style="color: #FF7F50; font-weight: 700; font-size: 1.25rem;">Transforming industries with cutting-edge technology.</p>
+                </div>
             </div>
         </div>
         <div class="carousel-item">
@@ -150,8 +156,10 @@
                 <img src="images/image2.jpeg" class="d-block w-100 h-auto" alt="Global Connectivity" style="object-fit: contain;">
             </div>
             <div class="carousel-caption d-none d-md-block">
-                <h5>Global Connectivity</h5>
-                <p>Building bridges across continents.</p>
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem 2rem; border-radius: 1rem; display: inline-block;">
+                    <h3 style="color: #2c07d0; font-weight: 700; font-size: 2rem;">Global Connectivity</h3>
+                    <p style="color: #FF7F50; font-weight: 700; font-size: 1.25rem;">Building bridges across continents.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -168,29 +176,62 @@
     <!-- Features Section -->
     <section id="features" class="container mt-10">
         <div class="row text-center">
-            <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <h3 class="text-2xl font-bold text-orange-500 mb-3">About Us</h3>
-                    <p>Learn about our journey and our commitment to excellence. 
-                        we offer comprehensive vehicle booking services from one destination to another, 
-                    we have professsional services</p>
+            <div class="col-md-4 mb-4">
+                <div class="card p-5 shadow-xl border-0 bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 rounded-3xl relative overflow-hidden futuristic-card hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-0 right-0 m-4">
+                        <i class="fas fa-rocket text-3xl text-blue-500 opacity-30"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-blue-700 mb-3 tracking-wide futuristic-title">About Us</h3>
+                    <p class="text-black font-medium"></p>
+                        We offer comprehensive vehicle booking 
+                        services from one destination to another, with professional services.</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <h3 class="text-2xl font-bold text-orange-500 mb-3">Our Services</h3>
-                    <p>Explore the range of services we offer to empower your business.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card p-5 shadow-xl border-0 bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 rounded-3xl relative overflow-hidden futuristic-card hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-0 right-0 m-4">
+                        <i class="fas fa-cogs text-3xl text-orange-400 opacity-30"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-blue-700 mb-3 tracking-wide futuristic-title">Our Services</h3>
+                    <p class="text-black font-medium">
+                    <ul>
+                        <li style="font-weight:700; font-size:1.2rem;">Vehicle Booking</li>
+                        <li style="font-weight:700; font-size:1.2rem;">Professional Drivers</li>
+                        <li style="font-weight:700; font-size:1.2rem;">24/7 Customer Support</li>
+                    </ul>
+                </p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <h3 class="text-2xl font-bold text-orange-500 mb-3">Our Core Values</h3>
-                    <p>Integrity, innovation, and sustainability at our core.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card p-5 shadow-xl border-0 bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 rounded-3xl relative overflow-hidden futuristic-card hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-0 right-0 m-4">
+                        <i class="fas fa-bolt text-3xl text-purple-500 opacity-30"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-blue-700 mb-3 tracking-wide futuristic-title">Our Core Values</h3>
+                    <p class="text-black font-medium">
+                    <ul>
+                        <li style="font-weight:700; font-size:1.2rem;">Integrity</li>
+                        <li style="font-weight:700; font-size:1.2rem;">Innovation</li>
+                        <li style="font-weight:700; font-size:1.2rem;">Sustainability</li>
+                    </ul>
+                </p>
                 </div>
             </div>
         </div>
     </section>
-<br>
+    <style>
+        .futuristic-card {
+            box-shadow: 0 8px 32px 0 rgba(10, 25, 238, 0.719);
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(2px);
+            position: relative;
+        }
+        .futuristic-title {
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(44,7,208,0.08);
+        }
+    </style>
+    <br>
     <!-- Counters Section -->
     <section id="counter-section" class="bg-gray-800 text-white py-10">
         <div class="container text-center">
@@ -211,6 +252,37 @@
             </div>
         </div>
     </section>
+    <script>
+    let countersStarted = false;
+    function animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        const counterSection = document.getElementById('counter-section');
+        const sectionPosition = counterSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (sectionPosition < screenPosition && !countersStarted) {
+            countersStarted = true;
+            counters.forEach(counter => {
+                counter.innerText = '0';
+                const updateCounter = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = Math.ceil(target / 100);
+
+                    if (count < target) {
+                        counter.innerText = count + increment > target ? target : count + increment;
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+    }
+    window.addEventListener('scroll', animateCounters);
+    window.addEventListener('load', animateCounters);
+    </script>
 
     <!-- Footer -->
     <footer class="py-6 text-white text-center">
