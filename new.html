@@ -3,350 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Xedolink</title>
+  <title>Modal Auth Forms</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: '#001f3f',
-            orange: '#FF7F50',
-          }
-        }
-      }
-    }
-  </script>
   <style>
-    /* For smooth color transition */
-    .navbar {
-      transition: all 0.3s ease;
+    /* Smooth modal transitions */
+    .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
-    .carousel-image-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f8f9fa; /* Fallback background color */
-        height: 500px; /* Set a fixed height or use vh units */
-        overflow: hidden;
+    .modal-content {
+      transition: transform 0.3s ease;
     }
-    
-    /* Responsive height adjustments */
-    @media (max-width: 768px) {
-        .carousel-image-container {
-            height: 300px;
-        }
-    }
-    
-    @media (max-width: 576px) {
-        .carousel-image-container {
-            height: 250px;
-        }
-    }
-    
-    /* Ensure images maintain aspect ratio */
-    .carousel-item img {
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
-        margin: 0 auto;
-    }
-        /* Cards Hover Animation */
-        .card:hover {
-            transform: scale(1.05);
-            transition: all 0.3s ease-in-out;
-            background: blue;
-            color: white;
-        }
-        /* Footer Gradient Background */
-        footer {
-            background: navy
-        }
-        
-        /* Fix for navbar text visibility */
-        .navbar {
-            color: white !important;
-        }
-        .navbar-nav .nav-link {
-            color: white !important;
-        } 
-        /* Custom hamburger icon color */
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
   </style>
 </head>
-<body class="min-h-screen">
-  <!-- Navbar -->
-  <nav id="navbar" class="navbar fixed top-0 w-full bg-navy text-white shadow-md transition-colors duration-300 z-50">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-between items-center h-16">
-        <!-- Brand Logo -->
-        <a href="#" class="text-xl font-bold">Xedolink</a>
-        
-        <!-- Mobile menu button -->
-        <button class="md:hidden rounded-md p-2 text-white focus:outline-none" aria-label="Toggle menu">
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-        
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-8">
-          <a href="#" class="hover:text-orange-300 transition">Home</a>
-          <a href="#" class="hover:text-orange-300 transition">About</a>
-          <a href="#" class="hover:text-orange-300 transition">Contact</a>
-        </div>
-      </div>
-      
-      <!-- Mobile Menu (hidden by default) -->
-      <div class="md:hidden hidden" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a href="#" class="block px-3 py-2 hover:bg-orange-500 rounded-md">Home</a>
-          <a href="#" class="block px-3 py-2 hover:bg-orange-500 rounded-md">About</a>
-          <a href="#" class="block px-3 py-2 hover:bg-orange-500 rounded-md">Contact</a>
-        </div>
-      </div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-md p-4 z-10">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#" class="text-xl font-bold">MySite</a>
+    <div class="flex space-x-4">
+      <a href="#" id="signInBtn" class="text-blue-600 hover:text-blue-800">Sign In</a>
+      <a href="#" id="signUpBtn" class="text-blue-600 hover:text-blue-800">Sign Up</a>
     </div>
-  </nav>
-  
-<!-- Hero Section -->
-    <section class="hero bg-gray-100 py-10 mt-24" style="z-index:1; position:relative;">
-        <div class="container text-center mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-4 text-gray-900">Welcome to Xedolink, Empowering Your Journey</h2>
-            <p class="text-lg text-gray-700 mb-6">Join us in revolutionizing the way we connect and travel.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#services" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-800 transition">
-                    Services
-                </a>
-                <a href="#services" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-800 transition">
-                    Login
-                </a>
-            </div>
-        </div>
-        </div>
-    </section>
-    <!-- Carousel Section -->
-      <!-- Carousel -->
-<div id="carouselExampleIndicators" class="carousel slide mt-10" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="carousel-image-container">
-                <img src="images/image1.jpg" class="d-block w-100 h-auto" alt="Innovative Solutions" style="object-fit: contain;">
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-                <div style="background: rgba(255,255,255,0.7); padding: 1rem 2rem; border-radius: 1rem; display: inline-block;">
-                    <h3 style="color: #2c07d0; font-weight: 700; font-size: 2rem;">Innovative Solutions</h3>
-                    <p style="color: #FF7F50; font-weight: 700; font-size: 1.25rem;">Transforming industries with cutting-edge technology.</p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="carousel-image-container">
-                <img src="images/image2.jpeg" class="d-block w-100 h-auto" alt="Global Connectivity" style="object-fit: contain;">
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-                <div style="background: rgba(255,255,255,0.7); padding: 1rem 2rem; border-radius: 1rem; display: inline-block;">
-                    <h3 style="color: #2c07d0; font-weight: 700; font-size: 2rem;">Global Connectivity</h3>
-                    <p style="color: #FF7F50; font-weight: 700; font-size: 1.25rem;">Building bridges across continents.</p>
-                </div>
-            </div>
-        </div>
+  </div>
+</nav>
+
+<!-- Sign In Modal -->
+<div id="signInModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible">
+  <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-md transform scale-95">
+    <div class="flex justify-between items-center border-b p-4">
+      <h3 class="text-xl font-semibold">Sign In</h3>
+      <button id="closeSignIn" class="text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+    <div class="p-6">
+      <form id="signInForm">
+        <div class="mb-4">
+          <label for="signInEmail" class="block text-gray-700 mb-2">Email</label>
+          <input type="email" id="signInEmail" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-6">
+          <label for="signInPassword" class="block text-gray-700 mb-2">Password</label>
+          <input type="password" id="signInPassword" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Sign In</button>
+      </form>
+    </div>
+  </div>
 </div>
 
-    <!-- Features Section -->
-    <section id="features" class="container mt-10">
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <div class="card p-5 shadow-xl border-0 bg-gradient-to-br from-navy-200 via-navy-300 to-navy-400 rounded-3xl relative overflow-hidden futuristic-card hover:scale-105 transition-transform duration-300">
-                    <div class="absolute top-0 right-0 m-4">
-                        <i class="fas fa-rocket text-3xl text-blue-500 opacity-30"></i>
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-blue-700 mb-3 tracking-wide futuristic-title">About Us</h3>
-                    <p class="text-black font-medium"></p>
-                        We offer comprehensive vehicle booking 
-                        services from one destination to another, with professional services.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card p-5 shadow-xl border-0 bg-gradient-to-br from-navy-200 via-navy-300 to-navy-400 rounded-3xl relative overflow-hidden futuristic-card hover:scale-105 transition-transform duration-300">
-                    <div class="absolute top-0 right-0 m-4">
-                        <i class="fas fa-cogs text-3xl text-orange-400 opacity-30"></i>
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-blue-700 mb-3 tracking-wide futuristic-title">Our Services</h3>
-                    <p class="text-black font-medium">
-                    <ul>
-                        <li style="font-weight:700; font-size:1.2rem;">Vehicle Booking</li>
-                        <li style="font-weight:700; font-size:1.2rem;">Professional Drivers</li>
-                        <li style="font-weight:700; font-size:1.2rem;">24/7 Customer Support</li>
-                    </ul>
-                </p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card p-5 shadow-xl border-0 bg-gradient-to-br from-navy-200 via-navy-300 to-navy-400 rounded-3xl relative overflow-hidden futuristic-card hover:scale-105 transition-transform duration-300">
-                    <div class="absolute top-0 right-0 m-4">
-                        <i class="fas fa-bolt text-3xl text-blue-500 opacity-30"></i>
-                    </div>
-                    <h3 class="text-2xl font-extrabold text-blue-700 mb-3 tracking-wide futuristic-title">Our Core Values</h3>
-                    <p class="text-black font-medium">
-                    <ul>
-                        <li style="font-weight:700; font-size:1.2rem;">Integrity</li>
-                        <li style="font-weight:700; font-size:1.2rem;">Innovation</li>
-                        <li style="font-weight:700; font-size:1.2rem;">Sustainability</li>
-                    </ul>
-                </p>
-                </div>
-            </div>
+<!-- Sign Up Modal -->
+<div id="signUpModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible">
+  <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-md transform scale-95">
+    <div class="flex justify-between items-center border-b p-4">
+      <h3 class="text-xl font-semibold">Sign Up</h3>
+      <button id="closeSignUp" class="text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="p-6">
+      <form id="signUpForm">
+        <div class="mb-4">
+          <label for="signUpName" class="block text-gray-700 mb-2">Full Name</label>
+          <input type="text" id="signUpName" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </div>
-    </section>
-    <style>
-        .futuristic-card {
-            box-shadow: 0 8px 32px 0 rgba(10, 25, 238, 0.719);
-            border: 1px solid rgba(243, 121, 16, 0.807);
-            backdrop-filter: blur(2px);
-            position: relative;
-        }
-        .futuristic-title {
-            letter-spacing: 2px;
-            text-shadow: 0 2px 8px rgba(243, 121, 16, 0.807);
-        }
-    </style>
-    <br>
-    <!-- Counters Section -->
-    <section id="counter-section" class="bg-gray-800 text-white py-10">
-        <div class="container text-center">
-            <h2 class="text-3xl font-bold mb-6">Our Achievements</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <h3 class="text-5xl font-extrabold text-orange-400 counter" data-target="120">0</h3>
-                    <p>Vehicles</p>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="text-5xl font-extrabold text-orange-400 counter" data-target="500">0</h3>
-                    <p>Drivers</p>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="text-5xl font-extrabold text-orange-400 counter" data-target="1000">0</h3>
-                    <p>Passengers Served</p>
-                </div>
-            </div>
+        <div class="mb-4">
+          <label for="signUpEmail" class="block text-gray-700 mb-2">Email</label>
+          <input type="email" id="signUpEmail" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
         </div>
-    </section>
-    <script>
-    let countersStarted = false;
-    function animateCounters() {
-        const counters = document.querySelectorAll('.counter');
-        const counterSection = document.getElementById('counter-section');
-        const sectionPosition = counterSection.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
+        <div class="mb-6">
+          <label for="signUpPassword" class="block text-gray-700 mb-2">Password</label>
+          <input type="password" id="signUpPassword" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-        if (sectionPosition < screenPosition && !countersStarted) {
-            countersStarted = true;
-            counters.forEach(counter => {
-                counter.innerText = '0';
-                const updateCounter = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const increment = Math.ceil(target / 100);
+<!-- JavaScript -->
+<script>
+  // DOM Elements
+  const signInBtn = document.getElementById('signInBtn');
+  const signUpBtn = document.getElementById('signUpBtn');
+  const signInModal = document.getElementById('signInModal');
+  const signUpModal = document.getElementById('signUpModal');
+  const closeSignIn = document.getElementById('closeSignIn');
+  const closeSignUp = document.getElementById('closeSignUp');
+  const signInForm = document.getElementById('signInForm');
+  const signUpForm = document.getElementById('signUpForm');
 
-                    if (count < target) {
-                        counter.innerText = count + increment > target ? target : count + increment;
-                        setTimeout(updateCounter, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCounter();
-            });
-        }
-    }
-    window.addEventListener('scroll', animateCounters);
-    window.addEventListener('load', animateCounters);
-    </script>
+  // Show Sign In Modal
+  signInBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    signInModal.classList.remove('invisible', 'opacity-0');
+    document.querySelector('#signInModal .modal-content').classList.remove('scale-95');
+    document.querySelector('#signInModal .modal-content').classList.add('scale-100');
+  });
 
-    <!-- Footer -->
-    <footer class="py-6 text-white text-center">
-        <p>&copy; 2025 XEDOLINK | All rights reserved.</p>
-        <p>Email: info@xedolink.com | Phone: +123 456 789</p>
-    </footer>
+  // Show Sign Up Modal
+  signUpBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    signUpModal.classList.remove('invisible', 'opacity-0');
+    document.querySelector('#signUpModal .modal-content').classList.remove('scale-95');
+    document.querySelector('#signUpModal .modal-content').classList.add('scale-100');
+  });
 
-  <!-- JavaScript for scroll effect and mobile menu -->
-  <script>
-    // Change navbar color on scroll
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.remove('bg-navy');
-        navbar.classList.add('bg-orange');
-      } else {
-        navbar.classList.remove('bg-orange');
-        navbar.classList.add('bg-navy');
-      }
-    });
+  // Close Modals
+  function closeModal(modal) {
+    modal.classList.add('invisible', 'opacity-0');
+    document.querySelector(`#${modal.id} .modal-content`).classList.remove('scale-100');
+    document.querySelector(`#${modal.id} .modal-content`).classList.add('scale-95');
+  }
 
-    // Mobile menu toggle
-    const mobileMenuButton = document.querySelector('button[aria-label="Toggle menu"]');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuButton.addEventListener('click', function() {
-      const isHidden = mobileMenu.classList.contains('hidden');
-      if (isHidden) {
-        mobileMenu.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-    // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the faster
-            const counterSection = document.getElementById('counter-section');
-            
-            // Check if counter section is in viewport
-            const sectionPosition = counterSection.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
+  closeSignIn.addEventListener('click', () => closeModal(signInModal));
+  closeSignUp.addEventListener('click', () => closeModal(signUpModal));
 
-            if(sectionPosition < screenPosition) {
-                counters.forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const increment = target / speed;
-                    
-                    if(count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(animateCounters, 1);
-                    } else {
-                        counter.innerText = target;
-                    }
-                });
-            }
-        }
+  // Close when clicking outside modal content
+  window.addEventListener('click', (e) => {
+    if (e.target === signInModal) closeModal(signInModal);
+    if (e.target === signUpModal) closeModal(signUpModal);
+  });
 
-        // Initialize counters when page loads if already in view
-        window.addEventListener('load', animateCounters);
-        
-        // Animate counters when scrolling
-        window.addEventListener('scroll', animateCounters);
-  </script>
+  // Form Submission
+  signInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Sign In form submitted!');
+    closeModal(signInModal);
+  });
+
+  signUpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Sign Up form submitted!');
+    closeModal(signUpModal);
+  });
+</script>
 </body>
 </html>
