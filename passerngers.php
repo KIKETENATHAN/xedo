@@ -6,7 +6,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Include database connection
-include 'db_connection.php';
+include 'config.php';
 
 // Ensure the user is logged in as admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
