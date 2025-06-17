@@ -8,7 +8,6 @@ error_reporting(E_ALL);
 
 // Include database connection
 include 'db_connection.php';
-
 // Check if the student is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
