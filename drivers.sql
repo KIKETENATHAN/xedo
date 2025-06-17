@@ -9,5 +9,3 @@ CREATE TABLE drivers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Record creation time
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- Record update time
 );
--- Indexes for faster lookups
-CREATE INDEX idx_driver_name ON drivers(driver_name);

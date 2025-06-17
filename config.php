@@ -7,8 +7,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 $servername = "localhost";
 $username = "xeddotra_cyrus"; // Change to your MySQL username
-$password = "Qwesa123$%^&"; // Change to your MySQL password
-$dbname = "xeddotra_xeddo travelink;
+$password = "Cyrus@2025"; // Change to your MySQL password
+$dbname = "xeddotra_travelink;
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
