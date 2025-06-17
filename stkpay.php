@@ -15,7 +15,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, {
     "PartyA": 254708579885,
     "PartyB": 174379,
     "PhoneNumber": 254708579885,
-    "CallBackURL": "https://nathan.destinycollege.co.ke/path",
+    "CallBackURL": "https://www.xeddolink.com/path",
     "AccountReference": "CompanyXLTD",
     "TransactionDesc": "Payment of X" 
   });
